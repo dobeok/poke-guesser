@@ -5,15 +5,7 @@ import time
 import pandas as pd
 
 
-dfs = pd.read_html('./resources/name_list.html')
-# remove non relevant tables, as we're only interested in pokemon stats
-dfs = dfs[:-3]
-dfs[-1]
-
-df = pd.concat(dfs)
-df = df.reset_index(drop=True)
-df['pokemon'] = df['Pokémon'].str.lower()
-df = df.iloc[330:]
+df = pd.read_csv('./resources/pokemon_list.csv')
 
 if __name__ == '__main__':
     confirm = input(f'This script will download {len(df)} images. Are you sure?[y/n]: ')
