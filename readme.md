@@ -1,6 +1,6 @@
 Intro
 ---
-This is a fun project for me to learn about Computer Vision. I'm using openpyCV to generate pokemon's silhouettes.
+This is a fun project for me to learn about computer vision. I'm primarily using [opencv](https://opencv.org/) to manipulate pokemon images and generate silhouettes.
 
 
 |Before|After|
