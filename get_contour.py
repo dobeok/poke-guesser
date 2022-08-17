@@ -61,7 +61,7 @@ def shift_center(contours, center_coords=CENTER_COORDS):
     
 
 def plot_on_template(file_path, fill=True, template_path='./resources/template.jpg'):
-    tpl = tpl = cv2.imread('./resources/template.png')
+    tpl = cv2.imread(template_path)
     # tpl = cv2.cvtColor(tpl, cv2.COLOR_BGR2RGB)
 
     contours = find_contours(file_path)
@@ -79,7 +79,8 @@ def plot_on_template(file_path, fill=True, template_path='./resources/template.j
 
 if __name__ == '__main__':
 
-    img_files = glob.glob('./resources/img_pokemon_png/*.png')[:10]
+    # img_files = glob.glob('./resources/img_pokemon_png/*.png')
+    img_files = ['./resources/img_pokemon_png/amoonguss.png']
     output_dir = './resources/img_with_template'
 
     for img_file in img_files:
