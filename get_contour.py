@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import glob
+import pickle
 
 # Read in the image, 0 = grayscale
 # im = cv2.imread(img_file, 1)
@@ -25,11 +26,12 @@ import glob
 # hardcoded based on template image
 CENTER_COORDS = 600, 550
 
-
-def find_contours(file_path):
-    # Run findContours - Note the RETR_EXTERNAL flag
-    # Also, we want to find the best contour possible with CHAIN_APPROX_NONE
+def read_img(file_path):
     im = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
+    return im
+
+
+def find_contours(im):
     contours, hierarchy = cv2.findContours(im.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
     im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
@@ -60,11 +62,11 @@ def shift_center(contours, center_coords=CENTER_COORDS):
     return contours
     
 
-def plot_on_template(file_path, fill=True, template_path='./resources/template.jpg'):
+def plot_on_template(im, fill=True, template_path='./resources/template.jpg'):
     tpl = cv2.imread(template_path)
     # tpl = cv2.cvtColor(tpl, cv2.COLOR_BGR2RGB)
 
-    contours = find_contours(file_path)
+    contours = find_contours(im)
     contours = shift_center(contours)
     cv2.drawContours(tpl, contours, -1, (181, 145, 98), thickness=2, lineType=cv2.LINE_AA)
     
@@ -77,6 +79,15 @@ def plot_on_template(file_path, fill=True, template_path='./resources/template.j
     return tpl
 
 
+# img_file = './resources/img_pokemon_png/amoonguss.png'
+# output_dir = './resources/img_with_template'
+# tail = img_file.split('/')[-1]
+# contours = find_contours(img_file)
+# contours
+# result = plot_on_template(img_file)
+
+
+
 if __name__ == '__main__':
 
     # img_files = glob.glob('./resources/img_pokemon_png/*.png')
@@ -87,7 +98,8 @@ if __name__ == '__main__':
         tail = img_file.split('/')[-1]
 
         try:
-            result = plot_on_template(img_file)
+            im = read_img(img_file)
+            result = plot_on_template(im)
 
             tail_jpg = tail[:-3] + 'jpg'
             cv2.imwrite(f'{output_dir}/{tail_jpg}', result)
