@@ -1,13 +1,13 @@
 Intro
 ---
-This is a fun project for me to learn about computer vision. I'm primarily using [opencv](https://opencv.org/) to manipulate pokemon images and generate silhouettes.
+This is a fun project for me to learn about computer vision and image processing. I'm primarily using [opencv](https://opencv.org/) to manipulate pokemon images and generate silhouettes.
 
 
 |Description|Sample|
 |:-:|:-:|
-|Original image|<img src='./resources/samples/amoonguss.png' height=200>|
-|Displayed as question|<img src='./resources/samples/amoonguss.jpg' height=200>|
-|Hint #1|<img src='./resources/samples/test.png' height=200>|
+|Original image|<img src='./resources/samples/amoonguss.png' height=200><br><small>Works best if the original image has plain or transparent background</small>|
+|Displayed as question|<img src='./resources/samples/amoonguss.jpg' height=200><br><small>This is created by finding the external contours of the original image and fill in the interior polygon with solid color</small>|
+|Hint #1|<img src='./resources/samples/test.png' height=200><br><small>This is created by pixelating the orignal image, and re-color using k-means clustering</small>|
 
 
 
@@ -20,9 +20,9 @@ Apart from the base game, I would like to add different levels of difficulties o
 
 - Making the game easier:
     - Showing the primary colors in the silhouettes
-    - Showing information (eg. pokemon type)
+    - Showing more information (eg. pokemon type)
     - Using older pokemon generations
-    - Other ideas, but mostly about image processing
+    - Other ideas, but mostly centered around image processing
 
 Acknowledgements
 ---
