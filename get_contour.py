@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import glob
 import random
+import pickle
 
 # hardcoded based on template image
 CENTER_COORDS = 600, 550
@@ -58,15 +59,6 @@ def plot_on_template(im, fill=True, fill_color = (142, 100, 46), template_path='
         cv2.fillPoly(tpl, pts=contours, color=fill_color)
     
     return tpl
-
-
-# img_file = './resources/img_pokemon_png/amoonguss.png'
-# output_dir = './resources/img_with_template'
-# tail = img_file.split('/')[-1]
-# contours = find_contours(img_file)
-# contours
-# result = plot_on_template(img_file)
-
 
 
 if __name__ == '__main__':
